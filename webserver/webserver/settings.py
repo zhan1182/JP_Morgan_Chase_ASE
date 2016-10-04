@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'trading_system.apps.TradingSystemConfig',
+    'index_app.apps.IndexAppConfig',
 ]
 
 MIDDLEWARE = [
