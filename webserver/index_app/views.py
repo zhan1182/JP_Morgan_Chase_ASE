@@ -2,20 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 # Create your views here.
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
-def index(request):
+def index_view(request):
 
     return render(request, 'index/index.html')
 
 
-def login(request):
+def login_view(request):
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
+            login(request, user)
+            # return render(request, 'trading_system/home.html')
             return HttpResponseRedirect('/home/')
         else:
             return HttpResponse('Failed to log in! Please return to the previous page.')
@@ -24,7 +26,7 @@ def login(request):
         raise Http404()
 
 
-def register(request):
+def register_view(request):
     if request.method == 'POST':
         
         username = request.POST.get('username')
