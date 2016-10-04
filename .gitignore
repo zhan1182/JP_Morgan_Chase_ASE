@@ -87,3 +87,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# pyc
+*.pyc
+
+# migration files
+000*
+
+# mysql configure file
+my.cnf
